@@ -1,0 +1,46 @@
+--Entre, e 
+SELECT last_name, salary FROM employees
+WHERE salary BETWEEN 9000 AND 11000;
+
+--o comando acima no where, é igual a
+WHERE salary >= 9000 AND salary <=11000;
+
+--Usar BETWEEN...AND fica mais simples de ler, lembrando que
+--no BETWEEN se começa com o valor mais baixo
+
+--IN(DENTRO)
+SELECT city, state_province, country_id
+FROM locations 
+WHERE country_id IN ('UK', 'CA');
+
+--WHERE pode estar assim tbm, mas usar o IN é mais simples de ler
+WHERE country_id = 'UK' OR country_id = 'CA';
+
+--LIKE
+
+-- mostra os sobre nomes que começar com qualquer letra seguida pela
+--letra que eu mencionei e depois qualquer letra
+--observe o resultado e o comando LIKE
+
+--(%): Representa sequencia de zeros ou caracteres
+--(_): Representa um caractere
+SELECT last_name FROM employees
+WHERE last_name LIKE '_o%';
+
+--o ESCAPE mostra que o "_" e o "%" faz parte do código
+SELECT last_name, job_id
+FROM EMPLOYEES
+WHERE job_id LIKE '%\_R%' ESCAPE '\';
+
+--IS NULL - Refere-se aos dados indisponíveis não atribuídos ou desconhecidos
+--IS NOT NULL - Refere-se aos dados disponíveis
+
+--Retorna os sobrenomes dos funcionoários que não tem gerente
+SELECT last_name, manager_id FROM employees
+WHERE manager_id IS NULL;
+
+--Retorna as linhas que têm valor na coluna mencionada
+SELECT last_name, commission_pct
+FROM employees
+WHERE commission_pct IS NOT NULL;
+
