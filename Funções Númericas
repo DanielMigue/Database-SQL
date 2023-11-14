@@ -1,0 +1,22 @@
+--FUNÇÕES NUMÉRICAS
+
+--ROUND a o ponto é a refêrencia. Usada em números e datas
+
+SELECT ROUND(45.926, 2) FROM DUAL; --Ele vai duas casas a direita do ponto e arredonda/*resultado é 45.93*/
+SELECT ROUND(45.926, 0) FROM DUAL;-- Se for 0 ele arredonda o número a que esta na esquerda do ponto e corta as casas decimais /*Resultado é 46*/
+SELECT ROUND(45.926, -1) FROM DUAL;-- pula uma casa a esquerda e arredonda esse número, resultado é 50
+
+--TRUNC não arredonda o número, ele só termina o número no ponto especificado
+
+SELECT TRUNC(45.926, 1) FROM DUAL; --exibe uma casa decimal, note o "1" a direita do ponto, nesse caso ele só corta o resto das casas decimais e não arredonda
+SELECT TRUNC(45.926, 0) FROM DUAL;--O numero fica sem casas decimais, resultado é 45 ao contrário do ROUND que ele além de fazer isso arrredondaria o número
+SELECT TRUNC(45.926, -1) FROM DUAL;--resultado é 40, é o mesmo caso do rounds porém ele não arredonda
+
+--MOD encontra o resto depois que um valor é divido
+--Exemplo: MOD de 5 divido por 2 é 1
+--Ele é usado para determinar se um valor é par ou ímpar.
+--Se dividir por 2 e não houver resto ele é par.
+
+--"Mod Demo" mostra as regiões imparares(1) e pares(0)
+SELECT country_name, MOD(REGION_ID,2) AS "Mod Demo"
+FROM countries;
